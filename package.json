@@ -1,0 +1,25 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "A web app to log expenses in any currency and see them converted live into home currency",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint src tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steph-craft/Expense-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steph-craft/Expense-tracker/issues"
+  },
+  "homepage": "https://github.com/steph-craft/Expense-tracker#readme",
+  "devDependencies": {
+    "eslint": "^10.12.0",
+    "jest": "^30.5.2"
+  }
+}

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A web app to log expenses in any currency and see them converted live into home currency",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "lint": "eslint src tests"

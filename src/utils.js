@@ -1,29 +1,36 @@
-// Pure utility functions — no fetch, no DOM. These are what we unit test.
-
-export function convertAmount(amount, rate) {
-  if (typeof rate !== 'number' || rate <= 0) {
-    return amount; // if rate missing or invalid, return original amount
+export function convertToBase(amount, fromCurrency, rates) {
+  if (!rates || typeof rates[fromCurrency] !== "number" || rates[fromCurrency] === 0) {
+    return null;
   }
-  return amount * rate;
+  return amount / rates[fromCurrency];
 }
 
-export function calculateTotal(expenses, rates,) {
-  return expenses.reduce((sum, expense) => {
-    const rate = rates[expense.currency];
-    return sum + convertAmount(expense.amount, rate);
+export function calculateTotal(expenses, rates) {
+  return expenses.reduce((total, expense) => {
+    const converted = convertToBase(expense.amount, expense.currency, rates);
+    return total + (converted ?? 0);
   }, 0);
 }
 
 export function filterByCategory(expenses, category) {
-  if (category === 'All') {
+  if (!category || category === "All") {
     return expenses;
   }
   return expenses.filter((expense) => expense.category === category);
 }
 
-export function formatCurrency(amount, currency) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: currency,
-  }).format(amount);
+
+export function formatCurrency(value, currencyCode) {
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    return `0.00 ${currencyCode}`;
+  }
+  return `${value.toFixed(2)} ${currencyCode}`;
+}
+
+
+export function sortCurrencyCodes(rates) {
+  if (!rates) {
+    return [];
+  }
+  return Object.keys(rates).sort();
 }

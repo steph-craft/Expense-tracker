@@ -1,121 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CurrencyTrack Expense Tracker</title>
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="src/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- Website heading -->
-    <header>
-        <h1>expense tracker </h1>
-        <p>Track your expenses in different currencies.</p>
-    </header>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <h1 class="logo">Expense Tracker</h1>
+      <div class="home-currency-control">
+        <label for="home-currency">Home currency</label>
+        <select id="home-currency"></select>
+      </div>
+    </div>
+  </header>
 
-    <main>
+  <main class="container">
 
-        <!-- Home currency and total -->
-        <section>
-            <h2>My Dashboard</h2>
+    <div id="status-banner" class="status-banner" hidden role="alert"></div>
 
-            <label for="homeCurrency">Choose Home Currency:</label>
+    <section class="card form-card">
+      <h2>Add an Expense</h2>
+      <form id="expense-form">
+        <div class="field">
+          <label for="description">Description</label>
+          <input type="text" id="description" placeholder="e.g. Lunch at Java" required>
+        </div>
 
-            <select id="homeCurrency">
-                <option value="KES">KES - Kenyan Shilling</option>
-                <option value="USD">USD - US Dollar</option>
-                <option value="EUR">EUR - Euro</option>
-                <option value="JYP">JYP - Japanese Yen</option>
-                <option value="TZS">TZS - Tanzanian Shilling</option>
+        <div class="field-row">
+          <div class="field">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" min="0.01" step="0.01" placeholder="0.00" required>
+          </div>
+
+          <div class="field">
+            <label for="currency">Currency</label>
+            <select id="currency" required></select>
+          </div>
+
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" required>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Rent">Rent</option>
+              <option value="Other">Other</option>
             </select>
+          </div>
+        </div>
 
-            <h3>Total Expenses</h3>
-            <p id="total">KES 0.00</p>
+        <button type="submit" class="btn">Add Expense</button>
+      </form>
+    </section>
 
-            <p id="rateStatus">Loading exchange rates...</p>
-        </section>
+    <section class="card list-card">
+      <div class="list-header">
+        <h2>Expenses</h2>
+        <div class="field">
+          <label for="category-filter">Filter by category</label>
+          <select id="category-filter">
+            <option value="All">All</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Rent">Rent</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
 
-        <!-- Add a new expense -->
-        <section>
-            <h2>Add New Expense</h2>
+      <ul id="expense-list" class="expense-list"></ul>
+      <p id="empty-message" class="empty-message">No expenses yet. Add one above.</p>
+    </section>
 
-            <form id="expenseForm">
+    <section class="card total-card">
+      <h2>Total</h2>
+      <p id="total-display" class="total-display">Loading rates...</p>
+    </section>
 
-                <label for="description">Expense Description:</label>
-                <input
-                    type="text"
-                    id="description"
-                    placeholder="e.g. Lunch"
-                    required
-                >
+  </main>
 
-                <label for="amount">Amount:</label>
-                <input
-                    type="number"
-                    id="amount"
-                    placeholder="Enter amount"
-                    min="0.01"
-                    step="any"
-                    required
-                >
-
-                <label for="currency">Currency:</label>
-                <select id="currency">
-                    <option value="KES">KES</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-    
-                    <option value="JYP">JYP</option>
-                    <option value="TZS">TZS</option>
-                </select>
-
-                <label for="category">Category:</label>
-                <select id="category">
-                    <option value="Food">Food</option>
-                    <option value="Transport">Transport</option>
-                    <option value="Shopping">Shopping</option>
-                    <option value="Bills">Bills</option>
-                    <option value="Other">Other</option>
-                </select>
-
-                <button type="submit">Add Expense</button>
-
-            </form>
-        </section>
-
-        <!-- View expenses -->
-        <section>
-            <h2>My Expenses</h2>
-
-            <label for="categoryFilter">Filter by Category:</label>
-
-            <select id="categoryFilter">
-                <option value="All">All Categories</option>
-                <option value="Food">Food</option>
-                <option value="Transport">Transport</option>
-                <option value="Shopping">Shopping</option>
-                <option value="Bills">Bills</option>
-                <option value="Other">Other</option>
-            </select>
-
-            <p id="listStatus">No expenses yet.</p>
-
-            <ul id="expenseList"></ul>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>expense tracker &copy; 2026</p>
-        
-    </footer>
-
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
-
 
 

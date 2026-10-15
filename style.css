@@ -1,65 +1,210 @@
-/* 1. Change the whole page */
+:root {
+  --navy: #14213d;
+  --text: #3d4658;
+  --muted: #6b7385;
+  --line: #e3e6ec;
+  --soft: #f5f6f9;
+  --danger: #b3261e;
+  --danger-bg: #fdecea;
+  --success-bg: #eaf7ee;
+  --success-text: #1e7a34;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: lightblue;
-    margin: 0;
-    padding: 20px;
+  margin: 0;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--soft);
+  line-height: 1.6;
 }
 
-/* 2. Make the title look nice */
-h1 {
-    color: darkblue;
-    text-align: center;
+h1, h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--navy);
 }
 
-/* 3. Make the main box white */
 .container {
-    background-color: white;
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.2em;
 }
 
-/* 4. Make the text boxes look nice */
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    box-sizing: border-box;
+/* ===== Nav ===== */
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  padding: 1em 0;
 }
 
-/* 5. Make the buttons blue */
-button {
-    background-color: blue;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8em;
 }
 
-/* 6. Change the button when you touch it */
-button:hover {
-    background-color: darkblue;
+.logo { margin: 0; font-size: 1.3em; }
+
+.home-currency-control {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.9em;
 }
 
-/* 7. Make the expense list look nice */
-li {
-    background-color: lightgray;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
+.home-currency-control label { color: var(--muted); }
+
+.status-banner {
+  margin: 1.2em 0 0;
+  padding: 0.9em 1.2em;
+  border-radius: 6px;
+  font-size: 0.9em;
 }
 
-/* 8. Make the page fit small screens */
+.status-error { background: var(--danger-bg); color: var(--danger); }
+.status-success { background: var(--success-bg); color: var(--success-text); }
+
+/* ===== Cards ===== */
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.6em;
+  margin-top: 1.4em;
+}
+
+.card h2 { margin: 0 0 1em; font-size: 1.3em; }
+
+/* ===== Form ===== */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  margin-bottom: 1em;
+  flex: 1;
+}
+
+.field label {
+  font-size: 0.85em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  padding: 0.6em 0.7em;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-size: 0.95em;
+  font-family: inherit;
+}
+
+.field-row {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  border: 2px solid var(--navy);
+  font-weight: 600;
+  font-size: 0.95em;
+  padding: 0.7em 1.6em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+
+
+/* ===== Expense list ===== */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.list-header .field { margin-bottom: 0; min-width: 180px; }
+
+.expense-list {
+  list-style: none;
+  margin: 1.2em 0 0;
+  padding: 0;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  padding: 0.9em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.expense-item:last-child { border-bottom: none; }
+
+.expense-info { flex: 1; min-width: 0; }
+
+.expense-desc {
+  margin: 0;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.expense-meta {
+  margin: 0.2em 0 0;
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+.expense-converted {
+  margin: 0;
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.btn-delete {
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  border-radius: 5px;
+  padding: 0.4em 0.8em;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-delete:hover { background: var(--danger); color: #fff; }
+
+.empty-message {
+  color: var(--muted);
+  font-size: 0.9em;
+  text-align: center;
+  margin: 1.5em 0 0;
+}
+
+/* ===== Total ===== */
+.total-display {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+}
+
+
+
+/* ===== Responsive ===== */
 @media (max-width: 600px) {
-    .container {
-        width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-    }
+  .field-row { flex-direction: column; gap: 0; }
+  .list-header { flex-direction: column; align-items: stretch; }
+  .expense-item { flex-wrap: wrap; }
 }

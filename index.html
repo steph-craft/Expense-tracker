@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurrencyTrack Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="src/main.js"></script>
+</head>
+
+<body>
+
+    <!-- Website heading -->
+    <header>
+        <h1>expense tracke </h1>
+        <p>Track your expenses in different currencies.</p>
+    </header>
+
+    <main>
+
+        <!-- Home currency and total -->
+        <section>
+            <h2>My Dashboard</h2>
+
+            <label for="homeCurrency">Choose Home Currency:</label>
+
+            <select id="homeCurrency">
+                <option value="KES">KES - Kenyan Shilling</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="JYP">JYP - Japanese Yen</option>
+                <option value="TZS">TZS - Tanzanian Shilling</option>
+            </select>
+
+            <h3>Total Expenses</h3>
+            <p id="total">KES 0.00</p>
+
+            <p id="rateStatus">Loading exchange rates...</p>
+        </section>
+
+        <!-- Add a new expense -->
+        <section>
+            <h2>Add New Expense</h2>
+
+            <form id="expenseForm">
+
+                <label for="description">Expense Description:</label>
+                <input
+                    type="text"
+                    id="description"
+                    placeholder="e.g. Lunch"
+                    required
+                >
+
+                <label for="amount">Amount:</label>
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Enter amount"
+                    min="0.01"
+                    step="any"
+                    required
+                >
+
+                <label for="currency">Currency:</label>
+                <select id="currency">
+                    <option value="KES">KES</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+    
+                    <option value="JYP">JYP</option>
+                    <option value="TZS">TZS</option>
+                </select>
+
+                <label for="category">Category:</label>
+                <select id="category">
+                    <option value="Food">Food</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <button type="submit">Add Expense</button>
+
+            </form>
+        </section>
+
+        <!-- View expenses -->
+        <section>
+            <h2>My Expenses</h2>
+
+            <label for="categoryFilter">Filter by Category:</label>
+
+            <select id="categoryFilter">
+                <option value="All">All Categories</option>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Bills">Bills</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <p id="listStatus">No expenses yet.</p>
+
+            <ul id="expenseList"></ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>expense tracker &copy; 2026</p>
+        
+    </footer>
+
+</body>
+</html>
+
+
+

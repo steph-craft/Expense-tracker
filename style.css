@@ -1,0 +1,65 @@
+/* 1. Change the whole page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightblue;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 2. Make the title look nice */
+h1 {
+    color: darkblue;
+    text-align: center;
+}
+
+/* 3. Make the main box white */
+.container {
+    background-color: white;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* 4. Make the text boxes look nice */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* 5. Make the buttons blue */
+button {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 6. Change the button when you touch it */
+button:hover {
+    background-color: darkblue;
+}
+
+/* 7. Make the expense list look nice */
+li {
+    background-color: lightgray;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+/* 8. Make the page fit small screens */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+}
